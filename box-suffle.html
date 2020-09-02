@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:o="urn:schemas-microsoft-com:office:office">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="telephone=no" name="format-detection" />
+<meta name="x-apple-disable-message-reformatting" />
+<META name="ROBOTS" content="NOINDEX, NOFOLLOW" />
+<meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;" name="viewport" />
+<meta content="IE=9; IE=8; IE=7; IE=EDGE" http-equiv="X-UA-Compatible" />
+<head>
+<title>UI Engineer Coding Exercise</title>
+<style>
+body{margin:0; padding:0;outline:none;}
+*{margin:0; padding:0;outline:none;}
+.container{width:960px; margin:0 auto;}
+.sort-suffle{background:#efefef; overflow:hidden; border-top:5px solid #bfbfbf}
+.suffle-boxes{float:left; width:600px}
+.suffle-boxes ul{list-style-type:none; margin:0; padding:0;}
+.suffle-boxes ul li{float:left; width:200px; height:200px; text-align:center; color:#fff;margin:0; padding:0; line-height:200px; font-size:72px; }
+.cell-3,.cell-5,.cell-9{background:#2F454E}
+.cell-1, .cell-8{background:#6f98a8}
+.cell-2, .cell-4{background:#2B8EAD}
+.cell-7, .cell-6{background:#BFBFBF}
+.suffle-button{float:right;width:300px; padding:30px 20px}
+h3{text-align:center ; padding:30px 0 5px;}
+.suffle-button a{cursor:pointer;background: #72c3dc;color: #fff;border: 1px solid #2b8ead;border-radius: 5px;box-shadow: 0px 5px 0px #2b8ead;text-shadow: 1px 1px 1px #2b8ead;font-weight: 100; display:inline-block;  padding:0 20px; margin-right:10px; text-decoration:none; font:18px/32px arial; text-transform:uppercase }
+.footer-logo{margin:30px 0}
+@media only screen and (max-width:375px) {
+.container{width:100%; margin:0 auto;}
+ h3{background:#000; color:#fff; padding:10px 0}
+.suffle-button{float:none;width:100%; padding:30px 20px; text-align:center}
+.suffle-boxes{float:none; width:100%}
+.sort-suffle{border:0; padding:0 20px;}
+.suffle-boxes ul li{margin-bottom:5px;float:none;  width:100%; height:auto;  font:24px/42px arial; background:#fff; color:#2F454E}
+.cell-3,.cell-5,.cell-9{border-left:7px solid #2F454E}
+.cell-1, .cell-8{border-left:7px solid #6f98a8}
+.cell-2, .cell-4{border-left:7px solid #2B8EAD}
+.cell-7, .cell-6{border-left:7px solid #BFBFBF}
+.footer-logo{margin:30px 20px}
+ }
+</style>
+</head>
+<body>
+
+
+<div class="container">
+
+<h3>Suffle and Sort</h3>
+<div class="sort-suffle">
+<div class="suffle-button">
+<a  class="suffle" onClick="suffle()" >Suffle</a><a  onClick="sort()" class="sort" >Sort</a>
+</div>
+<div class="suffle-boxes">
+
+<ul id="myUl">
+<li class="cell-1">1</li>
+<li class="cell-2">2</li>
+<li class="cell-3">3</li>
+<li class="cell-4">4</li>
+<li class="cell-5">5</li>
+<li class="cell-6">6</li>
+<li class="cell-7">7</li>
+<li class="cell-8">8</li>
+<li class="cell-9">9</li>
+</ul>
+</div>
+</div>
+
+<div class="footer-logo">
+<a href="https://www.maersk.com"> 
+<img src="https://assets.maerskline.com/integrated-global-nav/2/2.2.14//assets/img/logos/maeu.svg" alt="logo" style="width: 140px;"></a></div>
+
+</div>
+<script>
+
+var suffle = function(){
+var dom = Array.prototype.slice.call(document.getElementById("myUl").children);
+var temp,i = dom.length-1;
+while(i != -1){
+let rand = Math.floor(Math.random()*i);
+console.log(rand);
+temp = dom[rand];
+dom[rand] = dom[i];
+dom[i] = temp;
+i--;
+}
+
+dom.forEach(e => {
+// console.log(e);
+document.getElementById("myUl").appendChild(e);
+})
+
+}
+
+var sort = function(){
+Array.prototype.slice.call(document.getElementById("myUl").children).sort((e1,e2) => { return e1.innerHTML - e2.innerHTML}).forEach(e => {
+document.getElementById("myUl").appendChild(e);
+})
+}
+
+
+</script>
+
+</body>
+</html>
